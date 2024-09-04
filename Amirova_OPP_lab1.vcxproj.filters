@@ -21,9 +21,15 @@
     <ClCompile Include="Amirova_Actor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Amirova_Group.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Amirova_Actor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Amirova_Group.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Amirova_Actor.cpp" />
+    <ClCompile Include="Amirova_Group.cpp" />
     <ClCompile Include="Amirova_OPP_lab1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Amirova_Actor.h" />
+    <ClInclude Include="Amirova_Group.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
