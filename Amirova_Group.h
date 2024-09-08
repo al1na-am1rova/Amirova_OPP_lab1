@@ -9,7 +9,7 @@ using namespace std;
 class Amirova_Group
 {
 	public:
-		static vector <Amirova_Actor> actors;
+		static vector <Amirova_Actor*> actors;
 		static void add_actor();
 		static void show_all_actors();
 		static void clear_all();
