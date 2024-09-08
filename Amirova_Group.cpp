@@ -28,8 +28,7 @@ void Amirova_Group::show_all_actors()
 	}
 }
 
-void Amirova_Group::clear_all()
-{
+void Amirova_Group::clear_all() {
 	for (auto i : actors) {
 		delete i;
 	}

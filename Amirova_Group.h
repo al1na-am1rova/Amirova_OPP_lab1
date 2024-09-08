@@ -8,8 +8,9 @@ using namespace std;
 
 class Amirova_Group
 {
-	public:
+	private:
 		static vector <Amirova_Actor*> actors;
+	public:
 		static void add_actor();
 		static void show_all_actors();
 		static void clear_all();

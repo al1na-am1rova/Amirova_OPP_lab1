@@ -6,14 +6,14 @@ using namespace std;
 
 class Amirova_Actor
 {
-public:
+private:
 	string name;
 	int birth_year;
 	string gender;
 	double height; 
 	bool is_able_to_sing;
 	string city;
-
+public:
 	friend ostream& operator << (ostream& out, const Amirova_Actor& actor);
 	friend istream& operator >> (istream& in, Amirova_Actor& actor);
 	
