@@ -1,24 +1,10 @@
 #include "Amirova_Actor.h"
+#include "utils.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
-
-template <typename T>
-T get_correct_number(T min, T max)
-{
-    T x;
-    while ((cin >> x).fail()
-        || cin.peek() != '\n'
-        || x < min || x > max)
-    {
-        cin.clear();
-        cin.ignore(10000, '\n');
-        cout << "Введите число от " << min << " до " << max << ":";
-    }
-    return x;
-}
 
 string get_correct_gender() {
     string gender;
@@ -32,51 +18,77 @@ string get_correct_gender() {
     }
     return gender;
 }
+//
+//ostream& operator << (ostream& out, const Amirova_Actor& actor) {
+//    out << "Имя: " << actor.name
+//        << "\tГод рождения: " << actor.birth_year
+//        << "\tПол: " << actor.gender
+//        << "\tРост (в метрах) : " << actor.height
+//        << "\tНаличие вокальных данных(1 - есть, 0 - нет): " << actor.is_able_to_sing 
+//        << "\tГород: " << actor.city << endl;
+//    return out;
+//}
 
-ostream& operator << (ostream& out, const Amirova_Actor& actor) {
-    out << "Имя: " << actor.name
-        << "\tГод рождения: " << actor.birth_year
-        << "\tПол: " << actor.gender
-        << "\tРост (в метрах) : " << actor.height
-        << "\tНаличие вокальных данных(1 - есть, 0 - нет): " << actor.is_able_to_sing 
-        << "\tГород: " << actor.city << endl;
-    return out;
+void Amirova_Actor::show(ostream& out) {
+    out << "Имя: " << name
+        << "\tГод рождения: " << birth_year
+        << "\tПол: " << gender
+        << "\tРост (в метрах) : " << height
+        << "\tНаличие вокальных данных(1 - есть, 0 - нет): " << is_able_to_sing
+        << "\tГород: " << city;
 }
 
-istream& operator >> (istream& in, Amirova_Actor& actor) {
+//istream& operator >> (istream& in, Amirova_Actor& actor) {
+//    cout << "Имя: ";
+//    in.ignore(1000, '\n');
+//    getline(in, actor.name);
+//    cout << "Год рождения: " << endl;
+//    actor.birth_year = get_correct_number(1900, 2024);
+//    cout << "Пол: " << endl;
+//    actor.gender = get_correct_gender();
+//    cout << "Рост (в метрах) : " << endl;
+//    actor.height = get_correct_number(0.0, 4.0);
+//    cout << "Наличие вокальных данных(1 - есть, 0 - нет): " << endl;
+//    actor.is_able_to_sing = get_correct_number(0, 1);
+//    cout << "Город: ";
+//    in.ignore(1000, '\n');
+//    getline(in, actor.city);
+//    return in;
+//}
+
+void Amirova_Actor::create(istream& in) {
     cout << "Новый актёр" << endl;
     cout << "Имя: ";
     in.ignore(1000, '\n');
-    getline(in, actor.name);
+    getline(in, name);
     cout << "Год рождения: " << endl;
-    actor.birth_year = get_correct_number(1900, 2024);
+    birth_year = get_correct_number(1900, 2024);
     cout << "Пол: " << endl;
-    actor.gender = get_correct_gender();
+    gender = get_correct_gender();
     cout << "Рост (в метрах) : " << endl;
-    actor.height = get_correct_number(0.0, 4.0);
+    height = get_correct_number(0.0, 4.0);
     cout << "Наличие вокальных данных(1 - есть, 0 - нет): " << endl;
-    actor.is_able_to_sing = get_correct_number(0, 1);
+    is_able_to_sing = get_correct_number(0, 1);
     cout << "Город: ";
     in.ignore(1000, '\n');
-    getline(in, actor.city);
-    return in;
+    getline(in, city);
 }
 
 void Amirova_Actor::get_data_from_file(ifstream& fin)
 {
-    fin.ignore();
+    /*fin.ignore();
     getline(fin, name);
     fin >> birth_year >> gender >> height >> is_able_to_sing >> city;
-    return;
+    return;*/
 }
 
 void Amirova_Actor::load_data_to_file(ofstream& fout)
 {
-    fout << name << endl 
+    /*fout << name << endl 
         << birth_year << endl 
         << gender << endl
         << height << endl
         << is_able_to_sing << endl
         << city << endl;
-    return;
+    return;*/
 }
