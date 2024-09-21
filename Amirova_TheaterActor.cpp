@@ -3,23 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <boost/serialization/export.hpp>
 
-//ostream& operator << (ostream& out, const Amirova_TheaterActor& theater_actor) {
-//    out << theater_actor;
-//    out << "Театр, в котором актёр работает в настоящее время: " << theater_actor.theater_name << endl
-//        << "Общий стаж работы в театре: " << theater_actor.experience << endl;
-//    return out;
-//}
-//
-//istream& operator >> (istream& in, Amirova_TheaterActor& theater_actor) {
-//    in >> theater_actor;
-//    cout << "Введите театр, в котором актёр работает в настоящее время: ";
-//    in.ignore(1000, '\n');
-//    getline(in, theater_actor.theater_name);
-//    cout << "Введите общий стаж работы в театре: ";
-//    theater_actor.experience = get_correct_number(0,100);
-//    return in;
-//}
+BOOST_CLASS_EXPORT(Amirova_TheaterActor)
 
 void Amirova_TheaterActor::show(ostream& out) {
     Amirova_Actor::show(cout);

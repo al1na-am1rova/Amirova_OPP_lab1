@@ -3,8 +3,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 using namespace std;
+
+BOOST_CLASS_IMPLEMENTATION(Amirova_Actor, boost::serialization::level_type::object_serializable)
 
 string get_correct_gender() {
     string gender;
@@ -18,16 +21,6 @@ string get_correct_gender() {
     }
     return gender;
 }
-//
-//ostream& operator << (ostream& out, const Amirova_Actor& actor) {
-//    out << "Имя: " << actor.name
-//        << "\tГод рождения: " << actor.birth_year
-//        << "\tПол: " << actor.gender
-//        << "\tРост (в метрах) : " << actor.height
-//        << "\tНаличие вокальных данных(1 - есть, 0 - нет): " << actor.is_able_to_sing 
-//        << "\tГород: " << actor.city << endl;
-//    return out;
-//}
 
 void Amirova_Actor::show(ostream& out) {
     out << "Имя: " << name
@@ -35,26 +28,8 @@ void Amirova_Actor::show(ostream& out) {
         << "\tПол: " << gender
         << "\tРост (в метрах) : " << height
         << "\tНаличие вокальных данных(1 - есть, 0 - нет): " << is_able_to_sing
-        << "\tГород: " << city;
+        << "\tГород: " << city << endl;
 }
-
-//istream& operator >> (istream& in, Amirova_Actor& actor) {
-//    cout << "Имя: ";
-//    in.ignore(1000, '\n');
-//    getline(in, actor.name);
-//    cout << "Год рождения: " << endl;
-//    actor.birth_year = get_correct_number(1900, 2024);
-//    cout << "Пол: " << endl;
-//    actor.gender = get_correct_gender();
-//    cout << "Рост (в метрах) : " << endl;
-//    actor.height = get_correct_number(0.0, 4.0);
-//    cout << "Наличие вокальных данных(1 - есть, 0 - нет): " << endl;
-//    actor.is_able_to_sing = get_correct_number(0, 1);
-//    cout << "Город: ";
-//    in.ignore(1000, '\n');
-//    getline(in, actor.city);
-//    return in;
-//}
 
 void Amirova_Actor::create(istream& in) {
     cout << "Новый актёр" << endl;
@@ -74,21 +49,21 @@ void Amirova_Actor::create(istream& in) {
     getline(in, city);
 }
 
-void Amirova_Actor::get_data_from_file(ifstream& fin)
-{
-    /*fin.ignore();
-    getline(fin, name);
-    fin >> birth_year >> gender >> height >> is_able_to_sing >> city;
-    return;*/
-}
-
-void Amirova_Actor::load_data_to_file(ofstream& fout)
-{
-    /*fout << name << endl 
-        << birth_year << endl 
-        << gender << endl
-        << height << endl
-        << is_able_to_sing << endl
-        << city << endl;
-    return;*/
-}
+//void Amirova_Actor::get_data_from_file(ifstream& fin)
+//{
+//    /*fin.ignore();
+//    getline(fin, name);
+//    fin >> birth_year >> gender >> height >> is_able_to_sing >> city;
+//    return;*/
+//}
+//
+//void Amirova_Actor::load_data_to_file(ofstream& fout)
+//{
+//    /*fout << name << endl 
+//        << birth_year << endl 
+//        << gender << endl
+//        << height << endl
+//        << is_able_to_sing << endl
+//        << city << endl;
+//    return;*/
+//}
