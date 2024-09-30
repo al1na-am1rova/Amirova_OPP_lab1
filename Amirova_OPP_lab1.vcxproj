@@ -147,7 +147,12 @@
     <ClInclude Include="Amirova_Actor.h" />
     <ClInclude Include="Amirova_Group.h" />
     <ClInclude Include="Amirova_TheaterActor.h" />
+    <ClInclude Include="Boost.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Amirova_OPP_lab1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

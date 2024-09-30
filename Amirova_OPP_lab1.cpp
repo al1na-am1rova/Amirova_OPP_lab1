@@ -4,8 +4,6 @@
 #include "Amirova_Actor.h"
 #include "Amirova_Group.h"
 #include "utils.h"
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
 
 using namespace std;
 
@@ -26,27 +24,29 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
+    Amirova_Group group;
+
 	while (true) {
 		menu();
         int command = get_correct_number(1, 7);
         switch (command) {
         case 1:
-            Amirova_Group::add_actor();
+            group.add_actor();
             break;
         case 2:
-            Amirova_Group::add_theater_actor();
+            group.add_theater_actor();
             break;
         case 3:
-            Amirova_Group::show_all_actors();
+            group.show_all_actors();
             break;
         case 4:
-            Amirova_Group::save_to_file();
+            group.save_to_file();
             break;
         case 5:
-            Amirova_Group::load_from_file();
+            group.load_from_file();
             break;
         case 6:
-            Amirova_Group::clear_all(); 
+            group.clear_all(); 
             break;
         case 7:
             return 0;

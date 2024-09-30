@@ -1,16 +1,9 @@
 #pragma once
 #include "Amirova_Group.h"
-#include <iostream>
-#include <vector>
-#include <string>
-#include <fstream>
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/serialization/export.hpp>
+
+BOOST_CLASS_EXPORT(Amirova_TheaterActor)
 
 using boost::archive::archive_flags;
-
-vector<shared_ptr<Amirova_Actor>> Amirova_Group :: actors;
 
 void Amirova_Group::add_actor()
 {
@@ -30,7 +23,7 @@ void Amirova_Group::add_theater_actor()
 
 void Amirova_Group::show_all_actors()
 {
-	if (actors.size() > 0) {
+	if (!actors.empty()) {
 		cout << "Список всех актеров" << endl;
 		for (auto& actor : actors) {
 			actor->show(cout);
@@ -42,9 +35,6 @@ void Amirova_Group::show_all_actors()
 }
 
 void Amirova_Group::clear_all() {
-	/*for (auto& i : actors) {
-		delete i;
-	}*/
 	actors.clear();
 	cout << "Список актеров очищен" << endl;	
 }
@@ -66,10 +56,7 @@ void Amirova_Group::save_to_file()
 		if (fout.is_open()) {
 
 			boost::archive::text_oarchive write(fout, archive_flags::no_header);
-			write << actors.size();
-			for (auto& actor : actors) {
-				write << *actor;
-			}
+			write << actors;
 
 			cout << "Данные успешно сохранены в файл" << endl;
 		}
@@ -83,6 +70,7 @@ void Amirova_Group::save_to_file()
 
 void Amirova_Group::load_from_file()
 {
+	clear_all();
 	string filename;
 	cout << "Введите название файла:" << endl;
 	cin.ignore();
@@ -92,15 +80,7 @@ void Amirova_Group::load_from_file()
 
 	if (fin.is_open()) {
 		boost::archive::text_iarchive load(fin, archive_flags::no_header);
-		int counter;
-		load >> counter;
-		for (int i = 0; i < counter; i ++) {
-			shared_ptr<Amirova_Actor> actor = make_shared<Amirova_Actor>();
-
-			load >> *actor;
-
-			actors.insert(actors.begin(), actor);
-		}
+		load >> actors;
 		cout << "Данные успешно считаны из файла" << endl;
 	}
 

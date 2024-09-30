@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
+#include "boost.h"
 
 using namespace std;
 
@@ -26,9 +23,6 @@ public:
 
 	Amirova_Actor() {}
 	virtual ~Amirova_Actor() {}
-
-	//void get_data_from_file(ifstream& fin);
-	//void load_data_to_file(ofstream& fout);
 
 	template <class Archive>
 	void serialize(Archive& ar, const unsigned int version) {

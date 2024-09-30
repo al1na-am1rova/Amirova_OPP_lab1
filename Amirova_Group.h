@@ -1,17 +1,21 @@
 #pragma once
 #include <iostream>
-#include <string>
-#include <vector>
 #include "Amirova_Actor.h"
 #include "Amirova_TheaterActor.h"
+#include "boost.h"
 
 using namespace std;
 
 class Amirova_Group
 {
-	private:
-		static vector <shared_ptr<Amirova_Actor>> actors;
+		friend class boost::serialization::access;
+		vector <shared_ptr<Amirova_Actor>> actors;
 	public:
+		template<class Archive>
+		void serialize(Archive& ar, const unsigned int version)
+		{
+			ar& actors;
+		}
 		/*~Amirova_Group() {
 			for (auto& i : actors) {
 				delete i;
@@ -19,11 +23,11 @@ class Amirova_Group
 			actors.clear();
 			cout << "Список актеров очищен" << endl;
 		}*/
-		static void add_actor();
-		static void add_theater_actor();
-		static void show_all_actors();
-		static void clear_all();
-		static void save_to_file();
-		static void load_from_file();
+		void add_actor();
+		void add_theater_actor();
+		void show_all_actors();
+		void clear_all();
+		virtual void save_to_file();
+		virtual void load_from_file();
 };
 
